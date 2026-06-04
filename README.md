@@ -19,12 +19,12 @@ A simple web application for segmenting tumors in medical images using the **U²
 ## Installation
 
 ```bash
-git clone https://github.com/yourusername/yourproject.git
-cd yourproject
+git clone https://github.com/nguyencaovuphan/CS338_Kvasir_U2net.git
+cd CS338_Kvasir_U2net
 
 # (Optional) Create a virtual environment
 python -m venv venv
-source venv/bin/activate  # or venv\Scripts\activate
+source venv/bin/activate  # or .\venv\Scripts\activate (Windows)
 
 pip install -r requirements.txt
 ```
