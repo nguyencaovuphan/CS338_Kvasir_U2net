@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical AI - Tumor Detection U2Net</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="bg-grid"></div>
+
+    <div class="container">
+        <header>
+            <h1 class="glitch-title" data-text="TUMOR DETECTION AI">TUMOR DETECTION</h1>
+            <p class="subtitle">Medical Image Segmentation via U²-Net Architecture</p>
+        </header>
+
+        <div class="upload-container glass-card">
+            <form id="upload-form">
+                <div class="file-input-wrapper">
+                    <input type="file" id="image-input" accept="image/*" required>
+                    <label for="image-input" class="file-label">
+                        <div class="upload-icon">⚛</div>
+                        <span>Kéo thả hoặc Chọn ảnh Y tế (MRI / CT)</span>
+                    </label>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <span>BẮT ĐẦU PHÂN TÍCH</span>
+                </button>
+            </form>
+        </div>
+
+        <div class="results-container">
+            <div class="image-container glass-card original-card">
+                <h3>ORIGINAL SCAN</h3>
+                <div class="img-wrapper">
+                    <img id="original-image" src="" alt="Chờ tải ảnh...">
+                    <div class="scan-line hidden"></div>
+                </div>
+            </div>
+
+            <div class="image-container glass-card mask-card">
+                <h3>U²-NET MASK</h3>
+                <div class="img-wrapper">
+                    <img id="mask-image" src="" alt="Chờ xử lý...">
+                </div>
+            </div>
+
+            <div class="image-container glass-card overlay-card">
+                <h3>OVERLAY RESULT</h3>
+                <div class="img-wrapper">
+                    <img id="overlay-image" src="" alt="Chờ kết hợp...">
+                </div>
+            </div>
+        </div>
+
+        <div id="loading" class="loading hidden">
+            <div class="cyber-spinner"></div>
+            <p>HỆ THỐNG ĐANG PHÂN TÍCH KHỐI U...</p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', path='/script.js') }}"></script>
+</body>
+
+</html>

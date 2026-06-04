@@ -1,0 +1,40 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.so
+*.dll
+*.pyd
+
+# Environment
+.env
+.venv/
+venv/
+env/
+ENV/
+*.env
+*.pth
+
+# VSCode settings
+.vscode/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# MacOS & system files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Model checkpoints
+*.ckpt
+*.pth
+*.pt
+
+# Static cache
+*.cache
+
+# FastAPI cache or upload
+uploads/
+tmp/

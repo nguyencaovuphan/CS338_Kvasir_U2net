@@ -1,0 +1,318 @@
+/* Khởi tạo biến màu sắc phong cách Cyber-Medical */
+:root {
+    --bg-color: #060913;
+    --card-bg: rgba(10, 20, 38, 0.5);
+    --border-color: rgba(0, 242, 254, 0.15);
+    --primary-neon: #00f2fe;
+    --secondary-neon: #4facfe;
+    --tumor-neon: #ff3366;
+    --text-main: #e2e8f0;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Lưới nền 3D chuyển động chậm phía sau */
+.bg-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(0, 242, 254, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 242, 254, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: -1;
+    transform: perspective(500px) rotateX(60deg);
+    transform-origin: top;
+    animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 0 100%;
+    }
+}
+
+/* Container chính */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    padding: 40px 20px;
+    z-index: 1;
+}
+
+/* Tiêu đề phong cách phòng thí nghiệm viễn tưởng */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.glitch-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #fff;
+    text-shadow: 0 0 10px var(--primary-neon), 0 0 20px var(--secondary-neon);
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: #a0aec0;
+    letter-spacing: 1px;
+}
+
+/* Thiết kế thẻ kính mờ chuẩn Glassmorphism + Hiệu ứng nổi 3D */
+.glass-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(0, 242, 254, 0.05);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.glass-card:hover {
+    transform: translateY(-8px) scale(1.02) rotateX(3deg) rotateY(1deg);
+    border-color: rgba(0, 242, 254, 0.4);
+    box-shadow: 0 25px 50px rgba(0, 242, 254, 0.15), inset 0 0 20px rgba(0, 242, 254, 0.1);
+}
+
+/* Khu vực Upload */
+.upload-container {
+    padding: 30px;
+    max-width: 600px;
+    margin: 0 auto 50px auto;
+}
+
+.file-input-wrapper {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+#image-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.file-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 20px;
+    border: 2px dashed rgba(0, 242, 254, 0.3);
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.file-label:hover {
+    border-color: var(--primary-neon);
+    background: rgba(0, 242, 254, 0.05);
+}
+
+.upload-icon {
+    font-size: 2rem;
+    color: var(--primary-neon);
+    margin-bottom: 10px;
+    animation: pulse 2s infinite;
+}
+
+/* Nút bấm tương lai phát sáng */
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, var(--secondary-neon), var(--primary-neon));
+    border: none;
+    border-radius: 8px;
+    color: #000;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(0, 242, 254, 0.4);
+}
+
+.submit-btn:hover {
+    box-shadow: 0 6px 25px rgba(0, 242, 254, 0.7);
+    transform: translateY(-2px);
+}
+
+/* Khu vực lưới chứa ảnh kết quả */
+.results-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.image-container {
+    padding: 20px;
+    text-align: center;
+}
+
+.image-container h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    color: #cbd5e1;
+}
+
+/* Thẻ h3 của từng loại ảnh sẽ có màu neon riêng biệt */
+.original-card h3 {
+    color: var(--primary-neon);
+}
+
+.mask-card h3 {
+    color: var(--tumor-neon);
+}
+
+.overlay-card h3 {
+    color: #edf2f7;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+.img-wrapper {
+    width: 100%;
+    height: 280px;
+    background: #020408;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+}
+
+.img-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Hiệu ứng tia Laser quét ảnh y tế */
+.scan-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to bottom, transparent, var(--primary-neon));
+    box-shadow: 0 0 12px var(--primary-neon), 0 0 20px var(--primary-neon);
+    animation: scanAnimation 2s linear infinite;
+    z-index: 2;
+}
+
+@keyframes scanAnimation {
+    0% {
+        top: 0%;
+    }
+
+    50% {
+        top: 100%;
+    }
+
+    100% {
+        top: 0%;
+    }
+}
+
+/* Bộ điều khiển Trạng thái Ẩn/Hiện */
+.hidden {
+    display: none !important;
+}
+
+/* Bộ phận Hologram Loading */
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(4, 7, 16, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cyber-spinner {
+    width: 70px;
+    height: 70px;
+    border: 3px solid transparent;
+    border-top-color: var(--primary-neon);
+    border-bottom-color: var(--tumor-neon);
+    border-radius: 50%;
+    animation: spin 1.5s cubic-bezier(0.53, 0.21, 0.29, 0.67) infinite;
+    margin-bottom: 20px;
+}
+
+.loading p {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    color: var(--primary-neon);
+    letter-spacing: 2px;
+    animation: pulse 1.5s infinite;
+}
+
+/* Các Animation phụ trợ */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
